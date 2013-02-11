@@ -1,0 +1,118 @@
+/* Prefix all pages with mb- for no collisions */
+
+/* Page class for all mobile pages */
+.mb-page {
+  backface-visibility: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/*------- Go Deeper -------*/
+/* Move main screen */
+.mb-slide.mb-out {
+  animation: appDeeperOut 0.4s forwards ease-in;
+}
+@keyframes appDeeperOut {
+  99%  { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Move main screen header */
+.mb-slide.mb-out header {
+  animation: appDeeperHeaderOut 0.4s forwards ease-in;
+}
+@keyframes appDeeperHeaderOut {
+  50%  { transform: translateX(0); }
+  100%  { transform: translateX(-10%); }
+}
+
+/* Move main screen body */
+.mb-slide.mb-out>.view {
+  animation: appDeeperBodyOut 0.4s forwards ease-in;
+}
+@keyframes appDeeperBodyOut {
+  0%   { transform: translateX(0); }
+  100%  { transform: translateX(-100%); }
+}
+
+/* Move secondary screen */
+.mb-slide.mb-in {
+  animation: appDeeperIn 0.4s forwards ease-in;
+}
+@keyframes appDeeperIn {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(0); }
+}
+.mb-slide.mb-in>.view {
+  animation: appDeeperBodyIn 0.4s forwards ease-in;
+}
+@keyframes appDeeperBodyIn {
+  0%  { opacity: 0; }
+  40% { opacity: 1; }
+}
+
+/* Fade in secondary screen header */
+.mb-slide.mb-in header {
+  animation: appDeeperHeaderIn 0.4s forwards ease-in;
+}
+@keyframes appDeeperHeaderIn {
+  0% { opacity: 0; }
+  50%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/*------- Go Back -------*/
+/* Move secondary screen */
+.mb-slide.mb-in.mb-reverse {
+  animation: appBackOut 0.4s forwards ease-in;
+}
+@keyframes appBackOut {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+
+/* Fade out secondary screen header */
+.mb-slide.mb-in.mb-reverse header {
+  animation: appBackHeaderOut 0.4s forwards ease-in;
+}
+@keyframes appBackHeaderOut {
+  0%   { opacity: 1; }
+  50%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+/* Move secondary screen body */
+.mb-slide.mb-in.mb-reverse>.view {
+  animation: appBackBodyOut 0.4s forwards ease-in;
+}
+@keyframes appBackBodyOut {
+  0%   { transform: translateX(0); }
+  100%  { transform: translateX(100%); }
+}
+
+/* Move main screen */
+.mb-slide.mb-out.mb-reverse {
+  animation: appBackIn 0.4s forwards ease-in;
+}
+@keyframes appBackIn {
+  0%  { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
+
+/* Move main screen header */
+.mb-slide.mb-out.mb-reverse header {
+  animation: appBackHeaderIn 0.4s forwards ease-in;
+}
+@-webkit-keyframes appBackHeaderIn {
+  50%  { transform: translateX(0); }
+  100%  { transform: translateX(-10%); }
+}
+
+/* Move main screen body */
+.mb-slide.mb-out.mb-reverse>.view {
+  animation: appBackBodyIn 0.4s forwards ease-in;
+}
+@keyframes appBackBodyIn {
+  0%   { transform: translateX(-30%); }
+  100% { transform: translateX(0); }
+}

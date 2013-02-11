@@ -1,0 +1,15 @@
+<link rel="stylesheet" type="text/css" href="shared/style/headers.css">
+<section role="region">
+  <header>
+    <a ng-click="$navigate.go('/', 'slide', true)"><span class="icon icon-back">back</span></a>
+    <menu type="toolbar">
+      <a ng-click="$navigate.go('/edit/' + item.id, 'slide')"><span class="icon icon-edit">edit</span></a>
+    </menu>
+    <h1>{{item.title}}</h1>
+  </header>
+</section>
+<section class="view">
+  <h1>{{item.title}}</h1>
+  <h2>{{item.description}}</h2>
+  <h3>{{item.date}}</h3>
+</section>

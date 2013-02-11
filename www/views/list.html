@@ -1,0 +1,20 @@
+<link rel="stylesheet" type="text/css" href="shared/style_unstable/lists.css" />
+<link rel="stylesheet" type="text/css" href="shared/style/headers.css" />
+
+<section role="region">
+  <header>
+    <menu type="toolbar">
+      <button ng-click="$navigate.go('/add', 'slide')"><span class="icon icon-add">add</span></button>
+    </menu>
+    <h1>My items</h1>
+  </header>
+</section>
+<section data-type="list" class="view">
+  <ul>
+    <li ng-repeat="item in items">
+      <a ng-click="$navigate.go('/detail/' + item.id, 'slide')">
+        <p>{{item.title}}</p>
+      </a>
+    </li>
+  </ul>
+</section>

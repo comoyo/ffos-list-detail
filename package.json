@@ -1,0 +1,26 @@
+{
+  "name": "ffos-list-detail",
+  "version": "1.0.0",
+  "author": "Comoyo <firefox@comoyo.com>",
+  "description": "Sample app",
+  "contributors": [
+    {
+      "name": "Jan Jongboom",
+      "email": "jan@comoyo.com"
+    },
+    {
+      "name": "Sergi Mansilla",
+      "email": "sergi@comoyo.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:comoyo/ffos-list-detail.git"
+  },
+  "engines": {
+    "node": ">=0.8"
+  },
+  "dependencies": {
+    "connect": "2.7.2"
+  }
+}
