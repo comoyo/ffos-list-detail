@@ -68,51 +68,79 @@
   animation: appBackOut 0.4s forwards ease-in;
 }
 @keyframes appBackOut {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(100%); }
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(100%, 0, 0); }
+}
+.mb-slide.mb-out.mb-reverse {
+  animation: appBackIn 0.4s forwards ease-in;
+}
+@keyframes appBackIn {
+  0%  { transform: translate3d(-100%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+.mb-slide.mb-in.mb-reverse header {
+  opacity: 1;
+  transform: translateX(0);
+  animation: inherit;
+}
+.mb-slide.mb-out.mb-reverse header {
+  transform: translateX(0);
+  animation: inherit;
+}
+.mb-slide.mb-in.mb-reverse>.view {
+  transform: translateX(0);
+  animation: viewBackOut 0.4s forwards ease-in;
+}
+@keyframes viewBackOut {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(0); }
+}
+.mb-slide.mb-out.mb-reverse>.view {
+  transform: translateX(0);
+  animation: viewBackOut 0.4s forwards ease-in;
 }
 
 /* Fade out secondary screen header */
-.mb-slide.mb-in.mb-reverse header {
+/*.mb-slide.mb-in.mb-reverse header {
   animation: appBackHeaderOut 0.4s forwards ease-in;
 }
 @keyframes appBackHeaderOut {
   0%   { opacity: 1; }
   50%  { opacity: 1; }
   100% { opacity: 1; }
-}
+}*/
 /* Move secondary screen body */
-.mb-slide.mb-in.mb-reverse>.view {
+/*.mb-slide.mb-in.mb-reverse>.view {
   animation: appBackBodyOut 0.4s forwards ease-in;
 }
 @keyframes appBackBodyOut {
   0%   { transform: translateX(0); }
   100%  { transform: translateX(100%); }
-}
+}*/
 
 /* Move main screen */
-.mb-slide.mb-out.mb-reverse {
+/*.mb-slide.mb-out.mb-reverse {
   animation: appBackIn 0.4s forwards ease-in;
 }
 @keyframes appBackIn {
   0%  { transform: translateX(-100%); }
   100% { transform: translateX(0); }
-}
+}*/
 
 /* Move main screen header */
-.mb-slide.mb-out.mb-reverse header {
+/*.mb-slide.mb-out.mb-reverse header {
   animation: appBackHeaderIn 0.4s forwards ease-in;
 }
 @-webkit-keyframes appBackHeaderIn {
   50%  { transform: translateX(0); }
   100%  { transform: translateX(-10%); }
-}
+}*/
 
 /* Move main screen body */
-.mb-slide.mb-out.mb-reverse>.view {
+/*.mb-slide.mb-out.mb-reverse>.view {
   animation: appBackBodyIn 0.4s forwards ease-in;
 }
 @keyframes appBackBodyIn {
   0%   { transform: translateX(-30%); }
   100% { transform: translateX(0); }
-}
+}*/
