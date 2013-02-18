@@ -6,11 +6,11 @@ require.config({
     }
   },
   paths: {
-    jquery: 'jquery/jquery',
-    angular: 'angular/angular',
-    app: '../js/app'
+    jquery: 'components/jquery/jquery',
+    angular: 'components/angular/angular',
+    app: 'js/app'
   },
-  baseUrl: 'components/'
+  baseUrl: '/'
 });
 
 (function() {

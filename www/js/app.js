@@ -1,4 +1,5 @@
-define(["angular"], function(angular) {
+/*global angular */
+define(["angular"], function() {
   // this is where our app definition is
   var app = angular
     .module('app', ['mobile-navigate'])

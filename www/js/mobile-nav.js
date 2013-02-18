@@ -1,10 +1,11 @@
+/*global angular */
 /*
  * angular-mobile-nav by Andy Joslin
  * http://github.com/ajoslin/angular-mobile-nav
  * @license MIT License http://goo.gl/Z8Nlo
  */
 
-define(["angular"], function(angular) {
+define(["angular"], function() {
   angular.module('mobile-navigate', []);
   /*
    * $change

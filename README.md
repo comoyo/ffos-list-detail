@@ -47,3 +47,9 @@ the list of views that are preloaded is maintained in 'www/js/app.js'.
 use the `ng-tap="$navigate.go('/my/url', 'slide')"` directive.
 The second argument is either 'slide' or 'modal' depending on the animation,
 and the third argument is `reverse`, set it to true if doing a backwards animation.
+
+# Making a release build
+
+We can also do javascript combination and minification through RequireJS.
+First build the combined js file via: `node r.js -o build.js`.
+Now start the app with `node server.js release`.
