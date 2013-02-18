@@ -17,6 +17,11 @@ body {
 }
 
 .view {
-  overflow-y: scroll;
+  overflow-x: hidden;
+  overflow-y: auto;
   height: -moz-calc(100% - 5rem);
+}
+.view.detail {
+  padding: 1rem;
+  font-size: 1.5rem;
 }

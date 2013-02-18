@@ -8,7 +8,10 @@
   height: 100%;
 }
 
-/*------- Go Deeper -------*/
+/** ===============================================
+    SLIDE BEHAVIOR
+    ===============================================
+*/
 /* Move main screen */
 .mb-slide.mb-out {
   animation: appDeeperOut 0.4s forwards ease-in;
@@ -57,8 +60,8 @@
   animation: appDeeperHeaderIn 0.4s forwards ease-in;
 }
 @keyframes appDeeperHeaderIn {
-  0% { opacity: 0; }
-  50%  { opacity: 0; }
+  0% { opacity: 1; }
+  50%  { opacity: 1; }
   100% { opacity: 1; }
 }
 
@@ -98,4 +101,45 @@
 .mb-slide.mb-out.mb-reverse>.view {
   transform: translateX(0);
   animation: viewBackOut 0.4s forwards ease-in;
+}
+
+/** ===============================================
+    MODAL BEHAVIOR
+    ===============================================
+*/
+.mb-modal.mb-out {
+  animation: appModalOut 0.4s forwards ease-in;
+}
+@keyframes appModalOut {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(0); }
+}
+
+/* new screen is flying in from bottom */
+.mb-modal.mb-in {
+  animation: appModalIn 0.4s forwards ease;
+  z-index: 100000;
+  background: white;
+}
+@keyframes appModalIn {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0%); }
+}
+
+/** modal reverse */
+.mb-modal.mb-out.mb-reverse {
+  animation: appModalReverseOut 0.4s forwards ease-in;
+}
+@keyframes appModalReverseOut {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(0); }
+}
+
+.mb-modal.mb-in.mb-reverse {
+  animation: appModalReverseIn 0.4s forwards ease;
+  z-index: 1000;
+}
+@keyframes appModalReverseIn {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100%); }
 }

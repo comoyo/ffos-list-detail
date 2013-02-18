@@ -156,8 +156,8 @@ define(["angular"], function(angular) {
       scope.$on('$pageTransitionStart', function transitionStart($event, dest, source, reverse) {
         function transition() {
           insertPage(dest);
-          var _source = (source ? source.element : null)
-          var _transition = (reverse ? source.transition : dest.transition);
+          var _source = (source ? source.element : null);
+          var _transition = dest.transition || source.transition;
 
           $change(dest.element, _source, _transition, reverse, null, function() {
             if (source) {

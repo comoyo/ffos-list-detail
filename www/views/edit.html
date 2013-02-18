@@ -3,24 +3,32 @@
 <link rel="stylesheet" type="text/css" href="shared/style/input_areas.css">
 <link rel="stylesheet" type="text/css" href="shared/style/edit_mode.css">
 
+<!-- Header for new items -->
 <section role="region" ng-show="mode == 'new'">
   <header>
-    <a ng-click="$navigate.go('/', 'slide', true)"><span class="icon icon-close">close</span></a>
+    <a ng-tap="$navigate.go('/', 'modal', true)"><span class="icon icon-close">close</span></a>
     <menu type="toolbar">
-      <button ng-click="save()">done</button>
+      <button ng-tap="save()">done</button>
     </menu>
     <h1>{{title}}</h1>
   </header>
 </section>
+<!-- Header for editing items -->
 <section role="region" class="skin-dark" ng-show="mode == 'edit'">
   <header ng-show="mode == 'edit'">
-    <a ng-click="$navigate.go('/detail/{{item.id}}', 'slide', true)"><span class="icon icon-close">close</span></a>
+    <a ng-tap="$navigate.go('/detail/{{item.id}}', 'modal', true)"><span class="icon icon-close">close</span></a>
     <menu type="toolbar">
-      <button ng-click="save()">done</button>
+      <button ng-tap="save()">done</button>
     </menu>
     <h1>{{title}}</h1>
   </header>
 </section>
+
+<!-- 
+  Here is the actual view.
+  Data binding to form elements is pretty easy in angular, 
+  just set 'ng-model' to the required property.
+-->
 <form class="view">
   <fieldset>
     <legend>Title</legend>

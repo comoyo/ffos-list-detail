@@ -1,6 +1,6 @@
 /*global define */
 "use strict";
-define(["angular", "app"], function(angular, app) {
+define(["app"], function(app) {
   app.factory('database', function() {
 
     var DB = function() {
@@ -16,6 +16,31 @@ define(["angular", "app"], function(angular, app) {
         date: new Date(2013, 1, 1)
       }, {
         id: 3,
+        title: "Move stuff",
+        description: "Move this over there",
+        date: new Date(2012, 11, 9)
+      }, {
+        id: 4,
+        title: "Move stuff",
+        description: "Move this over there",
+        date: new Date(2012, 11, 9)
+      }, {
+        id: 5,
+        title: "Move stuff",
+        description: "Move this over there",
+        date: new Date(2012, 11, 9)
+      }, {
+        id: 6,
+        title: "Move stuff",
+        description: "Move this over there",
+        date: new Date(2012, 11, 9)
+      }, {
+        id: 7,
+        title: "Move stuff",
+        description: "Move this over there",
+        date: new Date(2012, 11, 9)
+      }, {
+        id: 8,
         title: "Move stuff",
         description: "Move this over there",
         date: new Date(2012, 11, 9)
