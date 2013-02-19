@@ -17,6 +17,8 @@ but addresses the following issues:
 For animations we have used a modified version of [angular-mobile-nav](http://github.com/ajoslin/angular-mobile-nav),
 where we adjusted the animations to be in line with the transitions from the FFOS Building Blocks.
 
+[Check it out!](http://comoyo.github.com/ffos-list-detail)
+
 # Prerequisites
 
 * [Node.js](http://nodejs.org/)
