@@ -34,7 +34,7 @@ define(["angular"], function() {
         'views/edit.html',
         'views/list.html'
       ].forEach(function(path) {
-        $http.get(path, { cache:$templateCache });
+        $http.get(path, { cache: $templateCache });
       });
     });
 
@@ -69,6 +69,6 @@ define(["angular"], function() {
       }
     };
   });
-
+  
   return app;
 });
