@@ -1,0 +1,195 @@
+/* Prefix all pages with mb- for no collisions */
+
+/* Page class for all mobile pages */
+.mb-page {
+  backface-visibility: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/** ===============================================
+    SLIDE BEHAVIOR
+    ===============================================
+*/
+/* Move main screen */
+.mb-slide.mb-out {
+  -webkit-animation: appDeeperOut 0.4s forwards ease-in;
+  animation: appDeeperOut 0.4s forwards ease-in;
+}
+@keyframes appDeeperOut {
+  99%  { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+@-webkit-keyframes appDeeperOut {
+  99%  { -webkit-transform: translateX(0); }
+  100% { -webkit-transform: translateX(-100%); }
+}
+
+/* Move main screen header */
+.mb-slide.mb-out header {
+  -webkit-animation: appDeeperHeaderOut 0.4s forwards ease-in;
+  animation: appDeeperHeaderOut 0.4s forwards ease-in;
+}
+@keyframes appDeeperHeaderOut {
+  50%  { transform: translateX(0); }
+  100%  { transform: translateX(-10%); }
+}
+@-webkit-keyframes appDeeperHeaderOut {
+  50%  { -webkit-transform: translateX(0); }
+  100%  { -webkit-transform: translateX(-10%); }
+}
+
+/* Move main screen body */
+.mb-slide.mb-out>.view {
+  -webkit-animation: appDeeperBodyOut 0.4s forwards ease-in;
+  animation: appDeeperBodyOut 0.4s forwards ease-in;
+}
+@keyframes appDeeperBodyOut {
+  0%   { transform: translateX(0); }
+  100%  { transform: translateX(-100%); }
+}
+@-webkit-keyframes appDeeperBodyOut {
+  0%   { -webkit-transform: translateX(0); }
+  100%  { -webkit-transform: translateX(-100%); }
+}
+
+/* Move secondary screen */
+.mb-slide.mb-in {
+  -webkit-animation: appDeeperIn 0.4s forwards ease-in;
+  animation: appDeeperIn 0.4s forwards ease-in;
+}
+@keyframes appDeeperIn {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(0); }
+}
+@-webkit-keyframes appDeeperIn {
+  0%   { -webkit-transform: translateX(100%); }
+  100% { -webkit-transform: translateX(0); }
+}
+
+.mb-slide.mb-in>.view {
+  -webkit-animation: appDeeperBodyIn 0.4s forwards ease-in;
+  animation: appDeeperBodyIn 0.4s forwards ease-in;
+}
+@keyframes appDeeperBodyIn {
+  0%  { opacity: 0; }
+  40% { opacity: 1; }
+}
+@-webkit-keyframes appDeeperBodyIn {
+  0%  { opacity: 0; }
+  40% { opacity: 1; }
+}
+
+/* Fade in secondary screen header */
+.mb-slide.mb-in header {
+  -webkit-animation: appDeeperHeaderIn 0.4s forwards ease-in;
+  animation: appDeeperHeaderIn 0.4s forwards ease-in;
+}
+@keyframes appDeeperHeaderIn {
+  0% { opacity: 1; }
+  50%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+@-webkit-keyframes appDeeperHeaderIn {
+  0% { opacity: 1; }
+  50%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+/*------- Go Back -------*/
+/* Move secondary screen */
+.mb-slide.mb-in.mb-reverse {
+  -webkit-animation: appBackOut 0.4s forwards ease-in;
+  animation: appBackOut 0.4s forwards ease-in;
+}
+@keyframes appBackOut {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(100%, 0, 0); }
+}
+@-webkit-keyframes appBackOut {
+  0%   { -webkit-transform: translate3d(0, 0, 0); }
+  100% { -webkit-transform: translate3d(100%, 0, 0); }
+}
+
+.mb-slide.mb-out.mb-reverse {
+  -webkit-animation: appBackIn 0.4s forwards ease-in;
+  animation: appBackIn 0.4s forwards ease-in;
+}
+@keyframes appBackIn {
+  0%  { transform: translate3d(-100%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+@-webkit-keyframes appBackIn {
+  0%  { -webkit-transform: translate3d(-100%, 0, 0); }
+  100% { -webkit-transform: translate3d(0, 0, 0); }
+}
+
+.mb-slide.mb-in.mb-reverse header {
+  opacity: 1;
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  -webkit-animation: inherit;
+  animation: inherit;
+}
+.mb-slide.mb-out.mb-reverse header {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  -webkit-animation: inherit;
+  animation: inherit;
+}
+.mb-slide.mb-in.mb-reverse>.view {
+  transform: translateX(0);
+  -webkit-animation: viewBackOut 0.4s forwards ease-in;
+  animation: viewBackOut 0.4s forwards ease-in;
+}
+@keyframes viewBackOut {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(0); }
+}
+@-webkit-keyframes viewBackOut {
+  0% { -webkit-transform: translateX(0); }
+  100% { -webkit-transform: translateX(0); }
+}
+
+.mb-slide.mb-out.mb-reverse>.view {
+  transform: translateX(0);
+  -webkit-animation: viewBackOut 0.4s forwards ease-in;
+  animation: viewBackOut 0.4s forwards ease-in;
+}
+
+/** ===============================================
+    MODAL BEHAVIOR
+    ===============================================
+*/
+
+/* new screen is flying in from bottom */
+.mb-modal.mb-in {
+  -webkit-animation: appModalIn 0.4s forwards ease;
+  animation: appModalIn 0.4s forwards ease;
+  z-index: 100000;
+  background: white;
+}
+@keyframes appModalIn {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0%); }
+}
+@-webkit-keyframes appModalIn {
+  0% { -webkit-transform: translateY(100%); }
+  100% { -webkit-transform: translateY(0%); }
+}
+
+/** modal reverse */
+.mb-modal.mb-in.mb-reverse {
+  -webkit-animation: appModalReverseIn 0.4s forwards ease;
+  animation: appModalReverseIn 0.4s forwards ease;
+  z-index: 1000;
+}
+@keyframes appModalReverseIn {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+@-webkit-keyframes appModalReverseIn {
+  0% { -webkit-transform: translateY(0); }
+  100% { -webkit-transform: translateY(100%); }
+}

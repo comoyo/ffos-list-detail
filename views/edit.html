@@ -1,0 +1,57 @@
+<link rel="stylesheet" type="text/css" href="shared/style_unstable/lists.css">
+<link rel="stylesheet" type="text/css" href="shared/style/headers.css">
+<link rel="stylesheet" type="text/css" href="shared/style/input_areas.css">
+<link rel="stylesheet" type="text/css" href="shared/style/edit_mode.css">
+
+<!-- Header for new items -->
+<section role="region" ng-show="mode == 'new'">
+  <header>
+    <a ng-tap="$navigate.go('/', 'modal', true)"><span class="icon icon-close">close</span></a>
+    <menu type="toolbar">
+      <button ng-tap="save()">done</button>
+    </menu>
+    <h1>{{title}}</h1>
+  </header>
+</section>
+<!-- Header for editing items -->
+<section role="region" class="skin-dark" ng-show="mode == 'edit'">
+  <header ng-show="mode == 'edit'">
+    <a ng-tap="$navigate.go('/detail/{{item.id}}', 'modal', true)"><span class="icon icon-close">close</span></a>
+    <menu type="toolbar">
+      <button ng-tap="save()">done</button>
+    </menu>
+    <h1>{{title}}</h1>
+  </header>
+</section>
+
+<!-- 
+  Here is the actual view.
+  Data binding to form elements is pretty easy in angular, 
+  just set 'ng-model' to the required property.
+-->
+<form class="view">
+  <fieldset>
+    <legend>Title</legend>
+    <section>
+      <p>
+        <input type="text" placeholder="Title" ng-model="item.title">
+        <button type="reset">Clear</button>
+      </p>
+    </section>
+  </fieldset>
+  <fieldset>
+    <legend>Description</legend>
+    <section>
+      <p>
+        <textarea placeholder="Description" ng-model="item.description" style="height: 8rem;"></textarea>
+        <button type="reset">Clear</button>
+      </p>
+    </section>
+  </fieldset>
+  <fieldset>
+    <legend>Date</legend>
+    <section>
+      <p><input type="date" ng-model="item.dateValue" /></p>
+    </section>
+  </fieldset>
+</form>
