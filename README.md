@@ -51,6 +51,7 @@ the list of views that are preloaded is maintained in 'www/js/app.js'.
 use the `ng-tap="$navigate.go('/my/url', 'slide')"` directive.
 The second argument is either 'slide' or 'modal' depending on the animation,
 and the third argument is `reverse`, set it to true if doing a backwards animation.
+* In need of UI elements? [buildingfirefoxos.com](http://buildingfirefoxos.com) has them!
 
 # Making a release build
 
