@@ -11,6 +11,7 @@ var isReleaseBuild = process.argv[2] === 'release';
 
 // the manifest file needs to be served with this mime type
 connect.static.mime.define({'application/x-web-app-manifest+json': ['webapp']});
+connect.static.mime.define({'text/cache-manifest': ['appcache']});
 
 // create a simple server
 var server = connect()

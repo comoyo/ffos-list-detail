@@ -33,6 +33,7 @@ require.config({
     
     // services
     'js/services/database.js',
+    'js/services/dates.js',
     
     // controllers
     'js/controllers/list.js',

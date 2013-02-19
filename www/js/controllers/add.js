@@ -2,19 +2,17 @@
  * Add an item to the database.
  * This controller works in conjunction with the 'edit' view.
  */
-function AddCtrl($scope, $routeParams, $navigate, database) {
+function AddCtrl($scope, $routeParams, $navigate, database, inputDates) {
   $scope.mode = 'new';
   $scope.title = 'New';
   $scope.item = {
     title: null,
     description: null,
-    date: (function(d) { 
-      return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(); 
-    })(new Date())
+    date: inputDates.format(new Date())
   };
   
   $scope.save = function() {
-    $scope.item.date = new Date(Date($scope.item.date));
+    $scope.item.date = inputDates.parse($scope.item.date);
     
     var obj = database.addItem($scope.item);
     console.log("Added", obj.id, "to database");
@@ -23,4 +21,4 @@ function AddCtrl($scope, $routeParams, $navigate, database) {
   };
 }
 
-AddCtrl.$inject = ['$scope', '$routeParams', '$navigate', 'database'];
+AddCtrl.$inject = ['$scope', '$routeParams', '$navigate', 'database', 'inputDateHandler'];
