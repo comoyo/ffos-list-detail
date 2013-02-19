@@ -29,6 +29,8 @@ where we adjusted the animations to be in line with the transitions from the FFO
 * Type: `bin/init.sh`
 * Start the integrated web server via `node server.js`
 
+*If the build fails follow the Windows instructions for a manual installation*
+
 # Start dev'ing on Windows
 
 * Clone this repository
