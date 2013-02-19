@@ -8,11 +8,11 @@ function AddCtrl($scope, $routeParams, $navigate, database, inputDates) {
   $scope.item = {
     title: null,
     description: null,
-    date: inputDates.format(new Date())
+    dateValue: inputDates.format(new Date())
   };
   
   $scope.save = function() {
-    $scope.item.date = inputDates.parse($scope.item.date);
+    $scope.item.date = inputDates.parse($scope.item.dateValue);
     
     var obj = database.addItem($scope.item);
     console.log("Added", obj.id, "to database");

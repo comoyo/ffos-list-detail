@@ -22,7 +22,9 @@ define(["angular"], function() {
       OUT_CLASS = "out",
       REVERSE_CLASS = "reverse",
       DONE_CLASS = "done",
-      ANIMATION_END = "animationend";
+      ANIMATION_END = typeof(document.body.style.webkitBorderRadius) !== "undefined" 
+        ? "webkitAnimationEnd"
+        : "animationend";
 
     return function change(next, prev, transType, reverse, options, cb) {
       options = angular.extend(options || {}, defaultOptions);
