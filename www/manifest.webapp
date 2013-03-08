@@ -2,7 +2,7 @@
   "version": "0.1",
   "name": "My App",
   "description": "Your new awesome Open Web App",
-  "launch_path": "/index.html",
+  "launch_path": "/",
   "icons": {
     "16": "/img/icons/mortar-16.png",
     "48": "/img/icons/mortar-48.png",
