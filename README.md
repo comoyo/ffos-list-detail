@@ -17,6 +17,8 @@ but addresses the following issues:
 For animations we have used a modified version of [angular-mobile-nav](http://github.com/ajoslin/angular-mobile-nav),
 where we adjusted the animations to be in line with the transitions from the FFOS Building Blocks.
 
+[Check it out!](http://comoyo.github.com/ffos-list-detail)
+
 # Prerequisites
 
 * [Node.js](http://nodejs.org/)
@@ -26,6 +28,8 @@ where we adjusted the animations to be in line with the transitions from the FFO
 * Clone this repository
 * Type: `bin/init.sh`
 * Start the integrated web server via `node server.js`
+
+*If the build fails follow the Windows instructions for a manual installation*
 
 # Start dev'ing on Windows
 
@@ -47,6 +51,7 @@ the list of views that are preloaded is maintained in 'www/js/app.js'.
 use the `ng-tap="$navigate.go('/my/url', 'slide')"` directive.
 The second argument is either 'slide' or 'modal' depending on the animation,
 and the third argument is `reverse`, set it to true if doing a backwards animation.
+* In need of UI elements? [buildingfirefoxos.com](http://buildingfirefoxos.com) has them!
 
 # Making a release build
 
