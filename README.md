@@ -23,22 +23,12 @@ where we adjusted the animations to be in line with the transitions from the FFO
 
 * [Node.js](http://nodejs.org/)
 
-# Start dev'ing on OS/X or Linux
-
-* Clone this repository
-* Type: `bin/init.sh`
-* Start the integrated web server via `node server.js`
-
-*If the build fails follow the Windows instructions for a manual installation*
-
-# Start dev'ing on Windows
+# Start dev'ing!
 
 * Clone this repository
 * Run `git submodule update --init --recursive`
 * Run `npm install`
-* Install bower via `npm install -g bower`
-* Go into '/www' and run `bower install`
-* Go up to the root, and start the integrated web server via `node server.js`
+* Start the integrated web server via `node server.js`
 
 # Good to know...
 
