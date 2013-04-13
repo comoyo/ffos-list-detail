@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "connect": "2.7.2",
-    "bower": "0.7.1"
+    "bower": "~0.8"
   },
   "scripts": {
     "postinstall": "./node_modules/bower/bin/bower install"
