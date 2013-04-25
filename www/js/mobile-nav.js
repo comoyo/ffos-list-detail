@@ -62,7 +62,7 @@ define(["angular"], function() {
       }
       
       setTimeout(function() {
-        next.show();
+        next.css('display', 'block');
         next.addClass(nextClasses);
         prev && prev.addClass(prevClasses);
         
@@ -77,7 +77,7 @@ define(["angular"], function() {
         }
         
         function done() {
-          prev && prev.hide();
+          prev && prev.css('display', 'none');
           $rootScope.$apply(function() {
             then();
           });
@@ -140,7 +140,7 @@ define(["angular"], function() {
         var locals = current && current.locals;
 
         page.element = angular.element("<div class='mb-page'>" + locals.$template + "</div>");
-        page.element.hide();
+        page.element.css({ 'display': 'none' });
 
         page.scope = scope.$new();
         var contents = page.element.contents();

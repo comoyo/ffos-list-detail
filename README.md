@@ -30,6 +30,9 @@ where we adjusted the animations to be in line with the transitions from the FFO
 * Run `npm install`
 * Start the integrated web server via `node server.js`
 
+When running in the [Firefox OS Simulator](https://addons.mozilla.org/en-US/firefox/addon/firefox-os-simulator/)
+enter `http://localhost:8081/manifest.webapp` in the textbox and press 'Add URL'.
+
 # Good to know...
 
 * When adding a new javascript file (a controller, a service, anything);
@@ -46,5 +49,16 @@ and the third argument is `reverse`, set it to true if doing a backwards animati
 # Making a release build
 
 We can also do javascript combination and minification through RequireJS.
-First build the combined js file via: `node r.js -o build.js`.
+First build the combined js and css file via: `./build.sh`.
 Now start the app with `node server.js release`.
+
+# Installing on the device / server without node.js
+
+If you want to host this application from any static website, 
+or want to package the application to submit to the market place, 
+simply copy over the /www folder. 
+This contains all the static assets required to run the app.
+
+If you want to run the release build of the app this way (yay faster!), 
+first build the release files via `./build.sh` and then change the `launch_path`
+in '/www/manifest.webapp' into `/index.release.html`.
