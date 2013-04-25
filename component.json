@@ -1,8 +1,7 @@
 {
   "name": "ffos-list-detail",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "dependencies": {
-    "jquery": "~1.9.1",
     "requirejs": "~2.1.4",
     "angular": "1.0.5"
   }

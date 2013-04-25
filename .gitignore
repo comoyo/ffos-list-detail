@@ -2,3 +2,5 @@ www/js/main-built.js
 www/components/
 .c9revisions/
 node_modules/
+www/index.release.html
+www/css/main-built.css

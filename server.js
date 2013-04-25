@@ -19,19 +19,42 @@ var server = connect()
   .use(function(req, res, next) {
     if(req.url !== '/') return next();
     
-    fs.readFile('./www/index.html', 'utf8', function(err, data) {
+    var index = 'index' + (isReleaseBuild ? '.release' : '') + '.html';
+    
+    fs.readFile('./www/' + index, 'utf8', function(err, data) {
       if(err) return next(err);
       
-      var mainPath = isReleaseBuild ? 'js/main-built.js' : 'js/main.js';
-      data = data.replace(/\[\%mainPath\%\]/, mainPath);
       res.writeHead(200, { 'Content-Type': 'text/html' });
       res.end(data);
     });
   })
   .use(connect.static(path.join(__dirname, 'www')));
 
-// and set up the server
-var port = process.env.PORT || 8081;
-var host = process.env.IP || '0.0.0.0';
-http.createServer(server).listen(port, host);
-console.log('Server running at http://' + host + ':' + port);
+function setup() {
+  if (isReleaseBuild) {
+    console.log('Running a release build');
+  }
+  // and set up the server
+  var port = process.env.PORT || 8081;
+  var host = process.env.IP || '0.0.0.0';
+  http.createServer(server).listen(port, host);
+  console.log('Server running at http://' + host + ':' + port);
+}
+
+if (isReleaseBuild) {
+  fs.readFile('./www/index.html', 'utf8', function(err, data) {
+    if (err) return console.error('Where is index.html?');
+    
+    data = data.replace(/"js\/main\.js"/, '"js/main-built.js"');
+    data = data.replace(/"css\/main\.css"/, '"css/main-built.css"');
+    
+    fs.writeFile('./www/index.release.html', data, 'utf8', function(err) {
+      if (err) return console.error('Writing release failed', err);
+      
+      setup();
+    });
+  });
+}
+else {
+  setup();
+}
