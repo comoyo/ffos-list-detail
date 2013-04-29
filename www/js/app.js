@@ -1,5 +1,5 @@
 /*global angular */
-define(["angular"], function() {
+define(['angular'], function() {
   // this is where our app definition is
   var app = angular
     .module('app', ['mobile-navigate'])
@@ -42,8 +42,8 @@ define(["angular"], function() {
     $scope.$navigate = $navigate;
     $navigate.go((window.location.hash || '#/').substr(1), 'none');
   });
-  
-  // TouchStart is faster than click, that's why we add this here as a 
+
+  // TouchStart is faster than click, that's why we add this here as a
   // directive. Use `ng-tap` in code rather than `ng-click`.
   app.directive('ngTap', function() {
     var isTouch = !!('ontouchstart' in window);
@@ -69,6 +69,6 @@ define(["angular"], function() {
       }
     };
   });
-  
+
   return app;
 });

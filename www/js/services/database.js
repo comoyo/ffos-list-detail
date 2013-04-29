@@ -1,6 +1,6 @@
 /*global define */
 "use strict";
-define(["app"], function(app) {
+define(['app'], function(app) {
   app.factory('database', function() {
 
     var DB = function() {

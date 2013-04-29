@@ -7,11 +7,11 @@ define(['app'], function(app) {
     input = input.toString();
     return Array(padLength - input.length + 1).join(char || " ") + input;
   };
-  
+
   app.factory('inputDateHandler', function() {
     return {
       format: function(d) {
-        return d.getFullYear() 
+        return d.getFullYear()
           + '-' + padLeft(d.getMonth() + 1, 2, '0')
           + '-' + padLeft(d.getDate(), 2, '0');
       },
