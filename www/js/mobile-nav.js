@@ -6,6 +6,8 @@
  */
 
 define(["angular"], function() {
+  var firstRequest = true;
+  
   angular.module('mobile-navigate', []);
   /*
    * $change
@@ -117,7 +119,6 @@ define(["angular"], function() {
      */
     self.onRouteSuccess = angular.noop; //default value
     $rootScope.$on('$routeChangeSuccess', function($event, next, last) {
-      if (next.$route.redirectTo) return;
       self.onRouteSuccess($event, next, last);
     });
 
