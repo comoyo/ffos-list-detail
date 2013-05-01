@@ -1,9 +1,8 @@
 ({
     baseUrl: "./www",
     paths: {
-      jquery: './components/jquery/jquery',
-      angular: './components/angular/angular',
-      app: './js/app'
+      app: './js/app',
+      angular: './components/angular/angular'
     },
     name: "js/main",
     out: "www/js/main-built.js",
