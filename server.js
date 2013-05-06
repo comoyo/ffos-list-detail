@@ -18,15 +18,24 @@ var server = connect()
   // super simple templating for the index.html file
   .use(function(req, res, next) {
     if(req.url !== '/') return next();
-    
+
     var index = 'index' + (isReleaseBuild ? '.release' : '') + '.html';
-    
+
     fs.readFile('./www/' + index, 'utf8', function(err, data) {
       if(err) return next(err);
-      
+
       res.writeHead(200, { 'Content-Type': 'text/html' });
       res.end(data);
     });
+  })
+
+  .use(function(req, res, next) {
+    // caching shared files (other files are cached thru appcache)
+   if(req.url.indexOf('/shared/') === 0) {
+      res.setHeader('Cache-Control', 'public, max-age=345600'); // 4 days
+      res.setHeader('Expires', new Date(Date.now() + 345600000).toUTCString());
+    }
+    return next();
   })
   .use(connect.static(path.join(__dirname, 'www')));
 
@@ -44,13 +53,15 @@ function setup() {
 if (isReleaseBuild) {
   fs.readFile('./www/index.html', 'utf8', function(err, data) {
     if (err) return console.error('Where is index.html?');
-    
+
     data = data.replace(/"js\/main\.js"/, '"js/main-built.js"');
     data = data.replace(/"css\/main\.css"/, '"css/main-built.css"');
-    
+    data = data.replace('<html ng-app="app"><!-- manifest="manifest.appcache" -->',
+      '<html ng-app="app" manifest="manifest.appcache">');
+
     fs.writeFile('./www/index.release.html', data, 'utf8', function(err) {
       if (err) return console.error('Writing release failed', err);
-      
+
       setup();
     });
   });

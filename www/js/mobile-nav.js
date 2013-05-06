@@ -123,12 +123,13 @@ define(["angular"], function() {
     });
 
     self.go = function go(path, transition, reverse) {
-      $location.path(path);
+      var req = $location.path(path).search({});
       //Wait for successful route change before actually doing stuff
       self.onRouteSuccess = function($event, next, last) {
         self.next = new Page(path, transition || next.$route.transition);
         navigate(self.next, self.current, !! reverse);
       };
+      return req;
     };
   }]);
 

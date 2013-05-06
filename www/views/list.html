@@ -1,15 +1,16 @@
 <section role="region">
   <header>
-    <menu type="toolbar">
-      <button ng-tap="$navigate.go('/add', 'modal')"><span class="icon icon-add">add</span></button>
-    </menu>
-    <h1>My items</h1>
+    <h1>CNN NewsPulse</h1>
   </header>
+  <progress value="0" max="100" class="pack-activity" ng-show="loading == true"></progress>
 </section>
 <section data-type="list" class="view">
   <ul>
     <li ng-repeat="item in items">
-      <a ng-tap="$navigate.go('/detail/' + item.id, 'slide')">
+      <aside class="pack-end" ng-hide="!item.image">
+        <img alt="{{item.title}}" src="{{item.image}}">
+      </aside>
+      <a ng-tap="$navigate.go('/detail/', 'slide').search({ path: item.link })">
         <p>{{item.title}}</p>
       </a>
     </li>

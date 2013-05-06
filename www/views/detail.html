@@ -1,14 +1,13 @@
 <section role="region">
   <header>
     <a ng-tap="$navigate.go('/', 'slide', true)"><span class="icon icon-back">back</span></a>
-    <menu type="toolbar">
-      <a ng-tap="$navigate.go('/edit/' + item.id, 'modal')"><span class="icon icon-edit">edit</span></a>
-    </menu>
     <h1>{{item.title}}</h1>
   </header>
+  <progress value="0" max="100" class="pack-activity" ng-show="loading == true"></progress>
 </section>
 <section class="view detail">
-  <h1>{{item.title}}</h1>
-  <p>{{item.description}}</p>
-  <p>{{item.date.toDateString()}}</p>
+  <img ng-hide="!item.image" src="{{item.image}}" style="width: 100%;" />
+  <p ng-bind-html-unsafe="item.body | newlines"></p>
 </section>
+
+<img src="img/offline.jpg" style="width: 100%" ng-show="error == true">

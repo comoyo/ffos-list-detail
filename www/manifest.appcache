@@ -1,4 +1,28 @@
 CACHE MANIFEST
-# 2013-02-19
+# 2013-05-06-02
 # Declare your cache manifest here!
-# Also add the reference in index.html!
+
+# This is the minimum viable required to have appcache working
+index.release.html
+css/main-built.css
+components/requirejs/require.js
+js/main-built.js
+
+# Images you might use
+img/offline.jpg
+
+# References to shared styles you use
+shared/style_unstable/lists.css
+shared/style/headers.css
+shared/style/input_areas.css
+shared/style/edit_mode.css
+shared/style_unstable/progress_activity.css
+shared/style/confirm.css
+
+NETWORK:
+*
+
+FALLBACK:
+
+SETTINGS:
+prefer-online

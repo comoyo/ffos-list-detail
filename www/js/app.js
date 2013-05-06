@@ -11,37 +11,35 @@ define(['angular'], function() {
           templateUrl: 'views/list.html',
           controller: 'ListCtrl'
         })
-        .when('/detail/:id', {
+        .when('/detail/', {
           templateUrl: 'views/detail.html',
           controller: 'DetailCtrl'
         })
-        .when('/add', {
-          templateUrl: 'views/edit.html',
-          controller: 'AddCtrl'
-        })
-        .when('/edit/:id', {
-          templateUrl: 'views/edit.html',
-          controller: 'EditCtrl'
-        })
-        .otherwise({
-          redirectTo: '/'
-        });
     }])
-    .run(function($templateCache, $http) {
+    .run(['httpCache', '$templateCache', function(httpCache, $templateCache) {
       // these are the items that we'll load into cache on app startup
       [
         'views/detail.html',
-        'views/edit.html',
         'views/list.html'
       ].forEach(function(path) {
-        $http.get(path, { cache: $templateCache });
+        // we cache for 1 second here, because we want immediate refresh
+        // (its mainly for offline usage)
+        // on page reload. templateCache handles it for the lifecycle of this app
+        httpCache.getUrl(path, 'views.' + path, 1 * 1000).then(function(data) {
+          $templateCache.put(path, data);
+        });
       });
-    });
+    }]);
 
-  app.controller('MainCtrl', function($scope, $navigate) {
+  app.controller('MainCtrl', ['$scope', '$navigate', '$location', function($scope, $navigate, $location) {
     $scope.$navigate = $navigate;
-    $navigate.go((window.location.hash || '#/').substr(1), 'none');
-  });
+    var search = $location.search();
+    $navigate.go($location.path(), 'none').search(search);
+  }]);
+
+  app.config(['$httpProvider', function($httpProvider) {
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  }]);
 
   // TouchStart is faster than click, that's why we add this here as a
   // directive. Use `ng-tap` in code rather than `ng-click`.
