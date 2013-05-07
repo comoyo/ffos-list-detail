@@ -59,6 +59,22 @@ if (isReleaseBuild) {
     data = data.replace('<html ng-app="app"><!-- manifest="manifest.appcache" -->',
       '<html ng-app="app" manifest="manifest.appcache">');
 
+    var allViews = fs.readdirSync('./www/views')
+      .map(function(f) {
+        return './www/views/' + f;
+      })
+      .filter(function(f) {
+        return fs.statSync(f).isFile();
+      })
+      .map(function(f) {
+        return '<script type="text/ng-template" id="' + f.replace('./www/', '') + '">' +
+          // @todo, properly escape this
+          fs.readFileSync(f, 'utf8') +
+          '</script>';
+      });
+
+    data = data.replace('<!-- views -->', allViews.join('\n'));
+
     fs.writeFile('./www/index.release.html', data, 'utf8', function(err) {
       if (err) return console.error('Writing release failed', err);
 

@@ -35,7 +35,14 @@ require.config({
     'js/filters/newline.js'
   ], function() {
     console.timeEnd('requirejs');
-    angular.bootstrap(document, ['app']);
+    if (document.readyState === 'complete') {
+      angular.bootstrap(document, ['app']);
+    }
+    else {
+      document.addEventListener('load', function() {
+        angular.bootstrap(document, ['app']);
+      });
+    }
   });
 
 })();

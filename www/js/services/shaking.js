@@ -2,7 +2,7 @@ define(['app'], function(app) {
   app.run(['$rootScope', function($rootScope) {
 
     if (typeof window.DeviceMotionEvent === 'undefined') {
-      return console.error('No DeviceMotion supported');
+      return console.log('No DeviceMotion supported');
     }
 
     // Shake sensitivity (a lower number is more)

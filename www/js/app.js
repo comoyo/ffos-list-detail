@@ -14,21 +14,7 @@ define(['angular'], function() {
         .when('/detail/', {
           templateUrl: 'views/detail.html',
           controller: 'DetailCtrl'
-        })
-    }])
-    .run(['httpCache', '$templateCache', function(httpCache, $templateCache) {
-      // these are the items that we'll load into cache on app startup
-      [
-        'views/detail.html',
-        'views/list.html'
-      ].forEach(function(path) {
-        // we cache for 1 second here, because we want immediate refresh
-        // (its mainly for offline usage)
-        // on page reload. templateCache handles it for the lifecycle of this app
-        httpCache.getUrl(path, 'views.' + path, 1 * 1000).then(function(data) {
-          $templateCache.put(path, data);
         });
-      });
     }]);
 
   app.controller('MainCtrl', ['$scope', '$navigate', '$location', function($scope, $navigate, $location) {

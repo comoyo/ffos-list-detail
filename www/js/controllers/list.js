@@ -9,10 +9,32 @@ define(['app'], function(app) {
         $scope.$apply();
       });
 
+      $scope.hasMozApps = !!navigator.mozApps;
+
+      if (navigator.mozApps) {
+        var checkIfInstalled = navigator.mozApps.getSelf();
+        checkIfInstalled.onsuccess = function () {
+          $scope.isInstalled = !!checkIfInstalled.result;
+          $scope.$apply();
+        };
+      }
+
+      $scope.install = function() {
+        var manifestURL = location.href.substring(0, location.href.lastIndexOf("/")) + "/manifest.webapp";
+        var installApp = navigator.mozApps.install(manifestURL);
+        installApp.onsuccess = function() {
+          $scope.isInstalled = true;
+          $scope.$apply();
+        };
+        installApp.onerror = function() {
+          alert("Install failed\n\n:" + installApp.error.name);
+        };
+      };
+
       $scope.refresh = function(forceNoCache) {
         $scope.loading = true;
 
-        return api.getIndex(forceNoCache).then(function(data) {
+        return api.getIndex(forceNoCache).success(function(data) {
           $scope.loading = false;
           $scope.items = data.stories;
 
@@ -29,10 +51,9 @@ define(['app'], function(app) {
               }
             });
           });
-
-        }, function(err) {
+        }).error(function(data, status) {
           $scope.loading = false;
-          console.error('An error occured', err);
+          console.error('An error occured', data, status);
         });
       };
 

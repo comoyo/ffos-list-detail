@@ -1,5 +1,10 @@
 <section role="region">
   <header>
+    <menu type="toolbar">
+      <button id="install" ng-show="hasMozApps && !isInstalled" ng-tap="install()">
+        <span class="icon icon-add">add</span>
+      </button>
+    </menu>
     <h1>CNN NewsPulse</h1>
   </header>
   <progress value="0" max="100" class="pack-activity" ng-show="loading == true"></progress>
