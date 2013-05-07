@@ -1,5 +1,5 @@
 /*global define */
-"use strict";
+'use strict';
 define(['app'], function(app) {
   app.factory('indexedDbCache', [function() {
     return {
@@ -11,7 +11,7 @@ define(['app'], function(app) {
         try {
           obj = JSON.parse(obj);
         }
-        catch(ex) {
+        catch (ex) {
           console.error('getting item from cache that isnt json', obj);
           return false;
         }
@@ -44,7 +44,7 @@ define(['app'], function(app) {
     var _http = $http;
 
     var fn = function(config) {
-      var cacheable =  config.method.toLowerCase() === 'get';
+      var cacheable = config.method.toLowerCase() === 'get';
       if (typeof config.idbCache !== 'object' || !cacheable) {
         return _http(config);
       }

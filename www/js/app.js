@@ -17,7 +17,8 @@ define(['angular'], function() {
         });
     }]);
 
-  app.controller('MainCtrl', ['$scope', '$navigate', '$location', function($scope, $navigate, $location) {
+  app.controller('MainCtrl', ['$scope', '$navigate', '$location',
+                            function($scope, $navigate, $location) {
     $scope.$navigate = $navigate;
     var search = $location.search();
     $navigate.go($location.path(), 'none').search(search);

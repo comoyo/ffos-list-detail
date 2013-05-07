@@ -13,21 +13,22 @@ define(['app'], function(app) {
 
       if (navigator.mozApps) {
         var checkIfInstalled = navigator.mozApps.getSelf();
-        checkIfInstalled.onsuccess = function () {
+        checkIfInstalled.onsuccess = function() {
           $scope.isInstalled = !!checkIfInstalled.result;
           $scope.$apply();
         };
       }
 
       $scope.install = function() {
-        var manifestURL = location.href.substring(0, location.href.lastIndexOf("/")) + "/manifest.webapp";
+        var host = location.href.substring(0, location.href.lastIndexOf('/'));
+        var manifestURL = host + '/manifest.webapp';
         var installApp = navigator.mozApps.install(manifestURL);
         installApp.onsuccess = function() {
           $scope.isInstalled = true;
           $scope.$apply();
         };
         installApp.onerror = function() {
-          alert("Install failed\n\n:" + installApp.error.name);
+          alert('Install failed\n\n:' + installApp.error.name);
         };
       };
 

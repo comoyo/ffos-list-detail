@@ -17,12 +17,12 @@ connect.static.mime.define({'text/cache-manifest': ['appcache']});
 var server = connect()
   // super simple templating for the index.html file
   .use(function(req, res, next) {
-    if(req.url !== '/') return next();
+    if (req.url !== '/') return next();
 
     var index = 'index' + (isReleaseBuild ? '.release' : '') + '.html';
 
     fs.readFile('./www/' + index, 'utf8', function(err, data) {
-      if(err) return next(err);
+      if (err) return next(err);
 
       res.writeHead(200, { 'Content-Type': 'text/html' });
       res.end(data);
@@ -31,7 +31,7 @@ var server = connect()
 
   .use(function(req, res, next) {
     // caching shared files (other files are cached thru appcache)
-   if(req.url.indexOf('/shared/') === 0) {
+   if (req.url.indexOf('/shared/') === 0) {
       res.setHeader('Cache-Control', 'public, max-age=345600'); // 4 days
       res.setHeader('Expires', new Date(Date.now() + 345600000).toUTCString());
     }
@@ -56,7 +56,8 @@ if (isReleaseBuild) {
 
     data = data.replace(/"js\/main\.js"/, '"js/main-built.js"');
     data = data.replace(/"css\/main\.css"/, '"css/main-built.css"');
-    data = data.replace('<html ng-app="app"><!-- manifest="manifest.appcache" -->',
+    data = data.replace(
+      '<html ng-app="app"><!-- manifest="manifest.appcache" -->',
       '<html ng-app="app" manifest="manifest.appcache">');
 
     var allViews = fs.readdirSync('./www/views')
@@ -67,9 +68,10 @@ if (isReleaseBuild) {
         return fs.statSync(f).isFile();
       })
       .map(function(f) {
-        return '<script type="text/ng-template" id="' + f.replace('./www/', '') + '">' +
-          // @todo, properly escape this
-          fs.readFileSync(f, 'utf8') +
+        return '<script type="text/ng-template" id="' +
+          f.replace('./www/', '') + '">' +
+            // @todo, properly escape this
+            fs.readFileSync(f, 'utf8') +
           '</script>';
       });
 
