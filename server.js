@@ -54,7 +54,9 @@ if (isReleaseBuild) {
   fs.readFile('./www/index.html', 'utf8', function(err, data) {
     if (err) return console.error('Where is index.html?');
 
-    data = data.replace(/"js\/main\.js"/, '"js/main-built.js"');
+    data = data.replace('<script defer src="components/requirejs/require.js" ' +
+      'data-main="js/main.js"></script>',
+      '<script defer src="js/main-built.js"></script>');
     data = data.replace(/"css\/main\.css"/, '"css/main-built.css"');
     data = data.replace(
       '<html ng-app="app"><!-- manifest="manifest.appcache" -->',

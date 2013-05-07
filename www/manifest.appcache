@@ -5,7 +5,6 @@ CACHE MANIFEST
 # This is the minimum viable required to have appcache working
 index.release.html
 css/main-built.css
-components/requirejs/require.js
 js/main-built.js
 
 # Images you might use
