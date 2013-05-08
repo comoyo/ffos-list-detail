@@ -26,22 +26,18 @@ define(['angular'], function() {
         .otherwise({
           redirectTo: '/'
         });
-    }])
-    .run(function($templateCache, $http) {
-      // these are the items that we'll load into cache on app startup
-      [
-        'views/detail.html',
-        'views/edit.html',
-        'views/list.html'
-      ].forEach(function(path) {
-        $http.get(path, { cache: $templateCache });
-      });
-    });
+    }]);
 
-  app.controller('MainCtrl', function($scope, $navigate) {
+  app.controller('MainCtrl', ['$scope', '$navigate', '$location',
+                            function($scope, $navigate, $location) {
     $scope.$navigate = $navigate;
-    $navigate.go((window.location.hash || '#/').substr(1), 'none');
-  });
+    var search = $location.search();
+    $navigate.go($location.path(), 'none').search(search);
+  }]);
+
+  app.config(['$httpProvider', function($httpProvider) {
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  }]);
 
   // TouchStart is faster than click, that's why we add this here as a
   // directive. Use `ng-tap` in code rather than `ng-click`.
