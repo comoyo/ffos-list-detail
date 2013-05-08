@@ -13,7 +13,7 @@
     "url": "http://yourawesomeapp.com"
   },
   "installs_allowed_from": ["*"],
-  "appcache_path": "/cache.manifest",
+  "appcache_path": "/manifest.appcache",
   "locales": {
     "es": {
       "description": "Su nueva aplicación impresionante Open Web",

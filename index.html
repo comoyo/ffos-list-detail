@@ -1,12 +1,98 @@
 <!DOCTYPE html>
-<html ng-app="app"><!-- manifest="manifest.appcache" -->
+<html manifest="manifest.appcache">
   <head>
     <title>List Detail example - Comoyo - Firefox OS</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"/>
     <meta charset="UTF-8"/>
-    <link rel="stylesheet" type="text/css" href="css/app.css"/>
-    <link rel="stylesheet" type="text/css" href="css/mobile-nav.css"/>
-    <script defer src="components/requirejs/require.js" data-main="js/main-built.js"></script>
+    <link rel="stylesheet" type="text/css" href="shared/style_unstable/lists.css">
+    <link rel="stylesheet" type="text/css" href="shared/style/headers.css">
+    <link rel="stylesheet" type="text/css" href="shared/style/input_areas.css">
+    <link rel="stylesheet" type="text/css" href="shared/style/edit_mode.css">
+    <link rel="stylesheet" type="text/css" href="css/main-built.css">
+    <script defer src="js/main-built.js"></script>
+    <script type="text/ng-template" id="views/edit.html"><!-- Header for new items -->
+<section role="region" ng-show="mode == 'new'">
+  <header>
+    <a ng-tap="$navigate.go('/', 'modal', true)"><span class="icon icon-close">close</span></a>
+    <menu type="toolbar">
+      <button ng-tap="save()">done</button>
+    </menu>
+    <h1>{{title}}</h1>
+  </header>
+</section>
+<!-- Header for editing items -->
+<section role="region" class="skin-dark" ng-show="mode == 'edit'">
+  <header ng-show="mode == 'edit'">
+    <a ng-tap="$navigate.go('/detail/{{item.id}}', 'modal', true)"><span class="icon icon-close">close</span></a>
+    <menu type="toolbar">
+      <button ng-tap="save()">done</button>
+    </menu>
+    <h1>{{title}}</h1>
+  </header>
+</section>
+
+<!-- 
+  Here is the actual view.
+  Data binding to form elements is pretty easy in angular, 
+  just set 'ng-model' to the required property.
+-->
+<form class="view">
+  <fieldset>
+    <legend>Title</legend>
+    <section>
+      <p>
+        <input type="text" placeholder="Title" ng-model="item.title">
+        <button type="reset">Clear</button>
+      </p>
+    </section>
+  </fieldset>
+  <fieldset>
+    <legend>Description</legend>
+    <section>
+      <p>
+        <textarea placeholder="Description" ng-model="item.description" style="height: 8rem;"></textarea>
+        <button type="reset">Clear</button>
+      </p>
+    </section>
+  </fieldset>
+  <fieldset>
+    <legend>Date</legend>
+    <section>
+      <p><input type="date" ng-model="item.dateValue" /></p>
+    </section>
+  </fieldset>
+</form></script>
+<script type="text/ng-template" id="views/list.html"><section role="region">
+  <header>
+    <menu type="toolbar">
+      <button ng-tap="$navigate.go('/add', 'modal')"><span class="icon icon-add">add</span></button>
+    </menu>
+    <h1>My items</h1>
+  </header>
+</section>
+<section data-type="list" class="view">
+  <ul>
+    <li ng-repeat="item in items">
+      <a ng-tap="$navigate.go('/detail/' + item.id, 'slide')">
+        <p>{{item.title}}</p>
+      </a>
+    </li>
+  </ul>
+</section></script>
+<script type="text/ng-template" id="views/detail.html"><section role="region">
+  <header>
+    <a ng-tap="$navigate.go('/', 'slide', true)"><span class="icon icon-back">back</span></a>
+    <menu type="toolbar">
+      <a ng-tap="$navigate.go('/edit/' + item.id, 'modal')"><span class="icon icon-edit">edit</span></a>
+    </menu>
+    <h1>{{item.title}}</h1>
+  </header>
+</section>
+<section class="view detail">
+  <h1>{{item.title}}</h1>
+  <p>{{item.description}}</p>
+  <p>{{item.date.toDateString()}}</p>
+</section></script>
   </head>
   <body role="application" ng-controller="MainCtrl">
       <mobile-view></mobile-view>
