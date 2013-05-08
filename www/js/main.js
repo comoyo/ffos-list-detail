@@ -18,13 +18,14 @@ require.config({
     // application
     'app',
     'js/mobile-nav.js',
-    
+
     // dependencies
     'angular',
 
     // services
     'js/services/database.js',
     'js/services/dates.js',
+    'js/services/http-cache.js',
 
     // controllers
     'js/controllers/list.js',
@@ -33,6 +34,7 @@ require.config({
     'js/controllers/edit.js'
   ], function() {
     console.timeEnd('requirejs');
+
     angular.bootstrap(document, ['app']);
   });
 
