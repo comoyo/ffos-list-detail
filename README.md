@@ -13,6 +13,9 @@ but addresses the following issues:
     This means we can keep the code clean and structured.
 3. By taking advantage of the view system of AngularJS we also get routing for free.
     Managing routing state by hand is not something enjoyable.
+4. Offline capabilties, the application itself will run without an internet connection as well;
+    even if you are running it as a hosted application. 
+    Plus there are handlers available to cache 3rd party data.
 
 For animations we have used a modified version of [angular-mobile-nav](http://github.com/ajoslin/angular-mobile-nav),
 where we adjusted the animations to be in line with the transitions from the FFOS Building Blocks.
