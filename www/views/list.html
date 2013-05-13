@@ -9,9 +9,18 @@
 <section data-type="list" class="view">
   <ul>
     <li ng-repeat="item in items">
-      <a ng-tap="$navigate.go('/detail/' + item.id, 'slide')">
+      <aside class="pack-end">
+        <img alt="{{item.title}}" src="{{item.image}}">
+      </aside>
+      <a ng-tap="$navigate
+                  .go('/detail/', 'slide')
+                  .search({
+                    path: item.link
+                  })">
+
         <p>{{item.title}}</p>
       </a>
+
     </li>
   </ul>
 </section>

@@ -1,14 +1,16 @@
-<section role="region">
-  <header>
-    <a ng-tap="$navigate.go('/', 'slide', true)"><span class="icon icon-back">back</span></a>
-    <menu type="toolbar">
-      <a ng-tap="$navigate.go('/edit/' + item.id, 'modal')"><span class="icon icon-edit">edit</span></a>
-    </menu>
-    <h1>{{item.title}}</h1>
-  </header>
-</section>
-<section class="view detail">
-  <h1>{{item.title}}</h1>
-  <p>{{item.description}}</p>
-  <p>{{item.date.toDateString()}}</p>
-</section>
+  <section role="region">
+    <header>
+      <a ng-tap="$navigate.go('/', 'slide', true)">
+        <span class="icon icon-back">back</span>
+      </a>
+
+      <h1>{{item.title}}</h1>
+
+    </header>
+  </section>
+  <section class="view detail">
+
+    <img src="{{item.image}}" style="width:100%">
+    <p>{{item.body}}</p>
+
+  </section>

@@ -23,6 +23,8 @@ require.config({
     'angular',
 
     // services
+    'js/services/shaking.js',
+
     'js/services/database.js',
     'js/services/dates.js',
     'js/services/http-cache.js',
