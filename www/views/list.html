@@ -1,7 +1,11 @@
 <section role="region">
   <header>
     <menu type="toolbar">
-      <button ng-tap="$navigate.go('/add', 'modal')"><span class="icon icon-add">add</span></button>
+      <!-- install() and the variables come from js/services/install.js -->
+      <button ng-tap="install()" ng-show="hasMozApps && !isInstalled">
+        <span class="icon icon-add">install</span>
+      </button>
+      <button ng-tap="$navigate.go('/add', 'modal')"><span class="icon icon-compose">add</span></button>
     </menu>
     <h1>My items</h1>
   </header>
