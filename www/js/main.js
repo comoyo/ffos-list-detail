@@ -21,11 +21,13 @@ require.config({
 
     // dependencies
     'angular',
+    'shared/js/async_storage.js',
 
     // services
     'js/services/database.js',
     'js/services/dates.js',
     'js/services/http-cache.js',
+    'js/services/install.js',
 
     // controllers
     'js/controllers/list.js',
