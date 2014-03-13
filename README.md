@@ -1,7 +1,8 @@
 # ffos-list-detail
 
 A list/detail/view template for an Open Web App,
-built using [AngularJS](http://angularjs.org/) and [RequireJS](http://requirejs.org/).
+built using [AngularJS](http://angularjs.org/) and [RequireJS](http://requirejs.org/),
+by [Jan Jongboom](http://janjongboom.com) from Telenor Digital.
 
 This app template was inspired by [Mortar](https://github.com/mozilla/mortar-list-detail),
 but addresses the following issues:
@@ -14,11 +15,8 @@ but addresses the following issues:
 3. By taking advantage of the view system of AngularJS we also get routing for free.
     Managing routing state by hand is not something enjoyable.
 4. Offline capabilties, the application itself will run without an internet connection as well;
-    even if you are running it as a hosted application. 
+    even if you are running it as a hosted application.
     Plus there are handlers available to cache 3rd party data.
-
-For animations we have used a modified version of [angular-mobile-nav](http://github.com/ajoslin/angular-mobile-nav),
-where we adjusted the animations to be in line with the transitions from the FFOS Building Blocks.
 
 [Check it out!](http://comoyo.github.com/ffos-list-detail)
 
@@ -29,12 +27,11 @@ where we adjusted the animations to be in line with the transitions from the FFO
 # Start dev'ing!
 
 * Clone this repository
-* Run `git submodule update --init --recursive`
 * Run `npm install`
-* Start the integrated web server via `node server.js`
+* Open `www/index.html`
 
-When running in the [Firefox OS Simulator](https://addons.mozilla.org/en-US/firefox/addon/firefox-os-simulator/)
-enter `http://localhost:8081/manifest.webapp` in the textbox and press 'Add URL'.
+When running in the [App Manager](https://developer.mozilla.org/en-US/Firefox_OS/Using_the_App_Manager),
+click 'Add packaged app', and point to the `www` folder.
 
 # Good to know...
 
@@ -44,9 +41,8 @@ This way RequireJS knows that it should load the file.
 * When adding new view templates only the templates in the root of 'www/views'
 are cached. Subfolders aren't processed at the moment.
 * When navigating around, please don't use normal links,
-use the `ng-tap="$navigate.go('/my/url', 'slide')"` directive.
-The second argument is either 'slide' or 'modal' depending on the animation,
-and the third argument is `reverse`, set it to true if doing a backwards animation.
+use the `ng-tap="$navigate.go('/my/url', 'forward')"` directive.
+The second argument can be 'forward', 'backward', 'popup', 'popdown' depending on the animation.
 * In need of UI elements? [buildingfirefoxos.com](http://buildingfirefoxos.com) has them!
 
 # Making a release build
@@ -60,20 +56,26 @@ The release build enables the following options:
     [script directives](http://docs.angularjs.org/api/ng.directive:script)
 
 A total of three requests in now required to load the application, one HTML,
-one CSS and one javascript request (excluding CSS for the UI library).
+one CSS and one javascript request (excluding images of course).
+First, choose whether you want a [packaged](https://developer.mozilla.org/en-US/Marketplace/Options/Packaged_apps)
+or a [hosted](https://developer.mozilla.org/en-US/Marketplace/Options/Self_publishing) app.
+The only difference between them is that a hosted app will contain an
+[appcache](http://www.html5rocks.com/en/tutorials/appcache/beginner/) file for offline usage.
+To build:
 
-To start a release build, run `./build.sh`.
+* Packaged app: `node build.js`
+* Hosted app: `node build.js appcache`
 
-# Installing on the device / server without node.js
+The build will be outputted in the ./dist directory.
+
+# Installing on the device / server
 
 If you want to host this application from any static website,
-or want to package the application to submit to the market place,
-simply copy over the /www folder.
-This contains all the static assets required to run the app.
+just upload the content of the /dist folder to it.
+The application will also work offline (if you built with appcache flag)
 
-If you want to run the release build of the app this way (and you should!),
-first build the release files via `./build.sh` and then change the `launch_path`
-in '/www/manifest.webapp' into `/index.release.html`.
+To run on a device, ZIP up the content of the /dist folder and publish to the marketplace,
+or install through the app manager.
 
 # Dealing with offline
 
@@ -82,11 +84,13 @@ runs without an internet connection.
 However, you will need to take the following things in consideration
 when extending the application.
 
-1. Add UI parts and images that you need to
+1. Add CSS files as an @import rule in
+    [/css/main.css]((https://github.com/comoyo/ffos-list-detail/blob/master/css/main.css)
+2. Add UI parts and images that you need to
     [/manifest.appcache](https://github.com/comoyo/ffos-list-detail/blob/master/www/manifest.appcache)
-2. Views need to be put in the [/views](https://github.com/comoyo/ffos-list-detail/blob/master/www/views)
+3. Views need to be put in the [/views](https://github.com/comoyo/ffos-list-detail/blob/master/www/views)
     directory. Subdirectories are not cached.
-3. If you are developing in Chrome, you need to manually clear the appcache
+4. If you are developing in Chrome, you need to manually clear the appcache
     every time you updated the app in [chrome://appcache-internals](chrome://appcache-internals/).
     Firefox desktop and Firefox OS will auto-refresh the app if there is an internet connection.
 
@@ -99,7 +103,7 @@ Instead of doing requests through [$http](http://docs.angularjs.org/api/ng.$http
 we provide you with the `http` service (the APIs are compatible), that has an
 extra option available: `idbCache`.
 
-This option allows you to cache request responses in local storage, contrary to
+This option allows you to cache request responses in indexedDB, contrary to
 AngularJS's default caching model that only caches in-memory.
 This way you can cache requests over subsequent page loads.
 The beauty of it is that if there is no internet connection,

@@ -1,7 +1,7 @@
 /*global angular */
 define(['app'], function(app) {
-  app.controller('EditCtrl', ['$scope', '$routeParams', '$navigate', 'database', 'inputDateHandler',
-    function EditCtrl($scope, $routeParams, $navigate, database, inputDates) {
+  app.controller('EditCtrl', ['$scope', '$routeParams', 'database', 'inputDateHandler',
+    function EditCtrl($scope, $routeParams, database, inputDates) {
       $scope.mode = 'edit';
       $scope.title = 'Edit';
       // do deep copy because our own database is in-memory
@@ -14,7 +14,7 @@ define(['app'], function(app) {
         var obj = database.editItem($scope.item.id, $scope.item);
         console.log("Updated", obj.id);
 
-        $navigate.go('/detail/' + obj.id, 'modal', true);
+        $scope.go('/detail/' + obj.id, 'popdown');
       };
     }
   ]);

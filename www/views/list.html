@@ -5,15 +5,15 @@
       <button ng-tap="install()" ng-show="hasMozApps && !isInstalled">
         <span class="icon icon-add">install</span>
       </button>
-      <button ng-tap="$navigate.go('/add', 'modal')"><span class="icon icon-compose">add</span></button>
+      <a ng-tap="go('/add', 'popup')"><span class="icon icon-compose">add</span></a>
     </menu>
-    <h1>My items</h1>
+    <h1>Mozilla projects</h1>
   </header>
 </section>
-<section data-type="list" class="view">
+<section data-type="list" class="view list">
   <ul>
     <li ng-repeat="item in items">
-      <a ng-tap="$navigate.go('/detail/' + item.id, 'slide')">
+      <a ng-tap="go('/detail/{{ item.id }}', 'forward')">
         <p>{{item.title}}</p>
       </a>
     </li>

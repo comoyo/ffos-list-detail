@@ -1,20 +1,14 @@
 CACHE MANIFEST
-# 2013-05-13
+# v10
 # Declare your cache manifest here!
 
 # This is the minimum viable required to have appcache working
-index.release.html
+index.html
 css/main-built.css
 js/main-built.js
 
 # Images you might use (remove the #)
 # img/some_image.jpg
-
-# References to shared styles you use
-shared/style_unstable/lists.css
-shared/style/headers.css
-shared/style/input_areas.css
-shared/style/edit_mode.css
 
 NETWORK:
 *

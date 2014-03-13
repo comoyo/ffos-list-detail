@@ -21,10 +21,12 @@
     "node": ">=0.8"
   },
   "dependencies": {
-    "connect": "2.7.2",
-    "bower": "~0.8"
+    "bower": "~0.8",
+    "exec-sync": "^0.1.6",
+    "rimraf": "^2.2.8",
+    "wrench": "^1.5.8"
   },
   "scripts": {
-    "postinstall": "./node_modules/bower/bin/bower install"
+    "install": "./node_modules/bower/bin/bower install"
   }
 }

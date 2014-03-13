@@ -1,7 +1,7 @@
 <!-- Header for new items -->
 <section role="region" ng-show="mode == 'new'">
   <header>
-    <a ng-tap="$navigate.go('/', 'modal', true)"><span class="icon icon-close">close</span></a>
+    <a ng-tap="go('/', 'popdown')"><span class="icon icon-close">close</span></a>
     <menu type="toolbar">
       <button ng-tap="save()">done</button>
     </menu>
@@ -11,7 +11,7 @@
 <!-- Header for editing items -->
 <section role="region" class="skin-dark" ng-show="mode == 'edit'">
   <header ng-show="mode == 'edit'">
-    <a ng-tap="$navigate.go('/detail/{{item.id}}', 'modal', true)"><span class="icon icon-close">close</span></a>
+    <a ng-tap="go('/detail/{{item.id}}', 'popdown')"><span class="icon icon-close">close</span></a>
     <menu type="toolbar">
       <button ng-tap="save()">done</button>
     </menu>
@@ -19,9 +19,9 @@
   </header>
 </section>
 
-<!-- 
+<!--
   Here is the actual view.
-  Data binding to form elements is pretty easy in angular, 
+  Data binding to form elements is pretty easy in angular,
   just set 'ng-model' to the required property.
 -->
 <form class="view">
