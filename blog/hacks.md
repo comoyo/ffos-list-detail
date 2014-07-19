@@ -123,7 +123,7 @@ included in our builds, by editing `js/main.js` and adding a line above
 `'js/controllers/edit.js'`:
 
 ```js
-'js/controllers/credits.js,'
+'js/controllers/credits.js',
 ```
 
 When we now click the button in the app, everything works as expected. The view
