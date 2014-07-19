@@ -18,7 +18,8 @@ define(['app'], function(app) {
 
     // this is installation logic
     $rootScope.install = function() {
-      var host = location.href.substring(0, location.href.lastIndexOf('/'));
+      var host = location.href.replace(location.hash, '');
+      host = host.substr(0, host.lastIndexOf('/'));
       var manifestURL = host + '/manifest.webapp';
       // you point mozApps.install to a manifest file
       var installApp = navigator.mozApps.install(manifestURL);
