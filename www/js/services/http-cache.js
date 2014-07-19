@@ -1,10 +1,10 @@
-/*global define asyncStorage */
+/*global define */
 'use strict';
-define(['app'], function(app) {
+define(['app', 'localforage'], function(app, localForage) {
   app.factory('indexedDbCache', ['$rootScope', function($rootScope) {
     return {
       getItemSkipExpiry: function(key, callback) {
-        asyncStorage.getItem(key, callback);
+        localForage.getItem(key, callback);
       },
 
       getItem: function(key, callback) {
@@ -26,7 +26,7 @@ define(['app'], function(app) {
       },
 
       setItem: function(key, value, expiresInMs, callback) {
-        asyncStorage.setItem(key, {
+        localForage.setItem(key, {
           expires: new Date(+new Date() + expiresInMs),
           value: value
         }, function() {
