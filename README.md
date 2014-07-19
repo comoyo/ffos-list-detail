@@ -18,7 +18,7 @@ but addresses the following issues:
     even if you are running it as a hosted application.
     Plus there are handlers available to cache 3rd party data.
 
-[Check it out!](http://comoyo.github.com/ffos-list-detail)
+[Check it out!](http://janjongboom.com/ffos-list-detail/)
 
 # Prerequisites
 
@@ -28,6 +28,7 @@ but addresses the following issues:
 
 * Clone this repository
 * Run `npm install`
+* Run `./node_modules/bower/bin/bower install`
 * Open `www/index.html`
 
 When running in the [App Manager](https://developer.mozilla.org/en-US/Firefox_OS/Using_the_App_Manager),

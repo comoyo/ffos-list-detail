@@ -13,7 +13,12 @@ var appcache = process.argv[2] === 'appcache';
 
 console.log(printStep(), 'Building in', __dirname + '/dist', 'appcache: ' + appcache);
 
-rmrf('./dist');
+try {
+  rmrf('./dist');
+}
+catch(ex) {
+  // Swallow all the exceptions
+}
 
 console.log(printStep(), 'Copying from www');
 

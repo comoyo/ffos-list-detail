@@ -27,6 +27,6 @@
     "wrench": "^1.5.8"
   },
   "scripts": {
-    "install": "./node_modules/bower/bin/bower install"
+    "postinstall": "./node_modules/bower/bin/bower install"
   }
 }
