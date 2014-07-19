@@ -19,6 +19,7 @@ div[data-ng-view] {
 
 .view {
   height: calc(100% - 5rem);
+  box-sizing: border-box;
 }
 .view.detail {
   padding: 1rem;
