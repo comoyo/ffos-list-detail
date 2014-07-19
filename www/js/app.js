@@ -23,6 +23,10 @@ define(['angular'], function() {
           templateUrl: 'views/edit.html',
           controller: 'EditCtrl'
         })
+        .when('/credits', {
+          templateUrl: 'views/credits.html',
+          controller: 'CreditsCtrl'
+        })
         .otherwise({
           redirectTo: '/'
         });
@@ -31,6 +35,9 @@ define(['angular'], function() {
       // AngularJS doesn't trust app:// protocol by default, which is the protocol
       // Firefox OS uses for packaged apps
       $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|app):/);
+    }])
+    .config(['$parseProvider', function($parseProvider) {
+      $parseProvider.unwrapPromises(true);
     }]);
 
   app.controller('MainCtrl', ['$scope', '$location', '$rootScope',

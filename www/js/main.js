@@ -42,7 +42,8 @@ require.config({
     'js/controllers/list.js',
     'js/controllers/add.js',
     'js/controllers/detail.js',
-    'js/controllers/edit.js'
+    'js/controllers/edit.js',
+    'js/controllers/credits.js'
   ], function() {
     console.timeEnd('requirejs');
 
