@@ -1,27 +1,136 @@
-html {
+html, body {
+  font-family: "Open Sans", sans-serif;
   height: 100%;
   width: 100%;
   padding: 0;
   margin: 0;
   font-size: 10px;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
-body {
-  font-family: "MozTT", sans-serif;
+div[data-ng-view] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
+  background: white;
 }
 
 .view {
-  overflow-x: hidden;
-  overflow-y: auto;
-  height: -moz-calc(100% - 5rem);
+  height: calc(100% - 5rem);
 }
 .view.detail {
   padding: 1rem;
   font-size: 1.5rem;
+}
+.view.list {
+  overflow-y: scroll;
+}
+
+/**
+ Animations
+ */
+.main-view.forward.ng-enter {
+  -webkit-animation: rightToCurrent 0.4s forwards;
+  animation: rightToCurrent 0.4s forwards;
+}
+
+.main-view.forward.ng-leave {
+  -webkit-animation: currentToLeft 0.4s forwards;
+  animation: currentToLeft 0.4s forwards;
+}
+
+.main-view.backward.ng-enter {
+  -webkit-animation: leftToCurrent 0.4s forwards;
+  animation: leftToCurrent 0.4s forwards;
+}
+
+.main-view.backward.ng-leave {
+  -webkit-animation: currentToRight 0.4s forwards;
+  animation: currentToRight 0.4s forwards;
+}
+
+.main-view.popup.ng-enter {
+  -webkit-animation: bottomToCurrent 0.4s forwards;
+  animation: bottomToCurrent 0.4s forwards;
+}
+
+.main-view.popup.ng-leave {
+  -webkit-animation: doNothing 0.4s step-end;
+  animation: doNothing 0.4s step-end;
+}
+
+.main-view.popdown.ng-leave {
+  -webkit-animation: currentToBottom 0.4s forwards;
+  animation: currentToBottom 0.4s forwards;
+  z-index: 10000;
+}
+
+@-webkit-keyframes currentToLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+@-webkit-keyframes rightToCurrent {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(0); }
+}
+@keyframes currentToLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+@keyframes rightToCurrent {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(0); }
+}
+/*------- Go Back -------*/
+@-webkit-keyframes leftToCurrent {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
+@-webkit-keyframes currentToRight {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+@keyframes leftToCurrent {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
+@keyframes currentToRight {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+/*-------- Up --------*/
+@-webkit-keyframes bottomToCurrent {
+  0%   { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+@-webkit-keyframes doNothing {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(0); }
+}
+@keyframes bottomToCurrent {
+  0%   { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+@keyframes doNothing {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(0); }
+}
+/*-------- Down -------*/
+@-webkit-keyframes currentToBottom {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+@keyframes currentToBottom {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+
+#initial-spinner {
+  position: absolute;
+  top: calc(50% - 1.45rem);
+  left: calc(50% - 1.45rem);
+  width: 2.9rem;
+  height: 2.9rem;
 }

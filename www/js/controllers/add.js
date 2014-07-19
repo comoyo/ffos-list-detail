@@ -3,8 +3,8 @@
  * This controller works in conjunction with the 'edit' view.
  */
 define(['app'], function(app) {
-  app.controller('AddCtrl', ['$scope', '$routeParams', '$navigate', 'database', 'inputDateHandler',
-    function AddCtrl($scope, $routeParams, $navigate, database, inputDates) {
+  app.controller('AddCtrl', ['$scope', '$routeParams', 'database', 'inputDateHandler',
+    function AddCtrl($scope, $routeParams, database, inputDates) {
       $scope.mode = 'new';
       $scope.title = 'New';
       $scope.item = {
@@ -19,7 +19,7 @@ define(['app'], function(app) {
         var obj = database.addItem($scope.item);
         console.log("Added", obj.id, "to database");
 
-        $navigate.go('/', 'modal', true);
+        $scope.go('/', 'popdown');
       };
     }
   ]);

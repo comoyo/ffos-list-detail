@@ -1,6 +1,5 @@
-www/js/main-built.js
+dist/
 www/components/
 .c9revisions/
+.c9/
 node_modules/
-www/index.release.html
-www/css/main-built.css

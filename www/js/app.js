@@ -2,7 +2,7 @@
 define(['angular'], function() {
   // this is where our app definition is
   var app = angular
-    .module('app', ['mobile-navigate'])
+    .module('app', ['ngRoute', 'ngAnimate'])
     .config(['$routeProvider', function($routeProvider) {
       // here we specify routes
       // which HTML and JS to execute when a certain route is requested
@@ -26,13 +26,21 @@ define(['angular'], function() {
         .otherwise({
           redirectTo: '/'
         });
+    }])
+    .config(['$compileProvider', function($compileProvider) {
+      // AngularJS doesn't trust app:// protocol by default, which is the protocol
+      // Firefox OS uses for packaged apps
+      $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|app):/);
     }]);
 
-  app.controller('MainCtrl', ['$scope', '$navigate', '$location',
-                            function($scope, $navigate, $location) {
-    $scope.$navigate = $navigate;
-    var search = $location.search();
-    $navigate.go($location.path(), 'none').search(search);
+  app.controller('MainCtrl', ['$scope', '$location', '$rootScope',
+                            function($scope, $location, $rootScope) {
+    // A go() function that also takes a pageAnimation
+    $scope.go = function(path, pageAnimation) {
+      $rootScope.viewTransition = pageAnimation;
+
+      $location.path(path);
+    };
   }]);
 
   app.config(['$httpProvider', function($httpProvider) {

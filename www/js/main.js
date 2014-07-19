@@ -3,25 +3,34 @@ require.config({
   shim: {
     'angular': {
       exports: 'angular'
-    }
+    },
+    angularRoute: ['angular'],
+    angularAnimate: ['angular'],
+    deps: ['app']
   },
   paths: {
     app: 'js/app',
-    angular: './components/angular/angular'
+    angular: 'components/angular/angular',
+    localforage: 'js/lib/localforage',
+    angularRoute: 'components/angular-route/angular-route',
+    angularAnimate: 'components/angular-animate/angular-animate'
   },
-  baseUrl: '/'
+  baseUrl: ''
 });
 
 (function() {
+  window.name = 'NG_DEFER_BOOTSTRAP!';
+
   console.time('requirejs');
   require([
     // application
     'app',
-    'js/mobile-nav.js',
 
     // dependencies
     'angular',
-    'shared/js/async_storage.js',
+    'angularRoute',
+    'angularAnimate',
+    'localforage',
 
     // services
     'js/services/database.js',
