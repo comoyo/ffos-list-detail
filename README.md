@@ -17,6 +17,8 @@ but addresses the following issues:
 4. Offline capabilties, the application itself will run without an internet connection as well;
     even if you are running it as a hosted application.
     Plus there are handlers available to cache 3rd party data.
+5. Also works in Webkit browsers, so you can also use this template as general
+    mobile app starting kit.
 
 [Check it out!](http://janjongboom.com/ffos-list-detail/)
 
@@ -165,4 +167,48 @@ var img = new Image();
 img.src = someDataFromTheServer.image;
 
 // or just set <img src=""> to something :-)
+```
+
+## Adding new view animations
+
+If you want to add a new view animation you can do it completely in CSS.
+We use keyframe animations through ng-animate to create the transitions.
+The animations live in [/css/app.css](https://github.com/comoyo/ffos-list-detail/blob/master/css/app.css),
+and have the following format (you'll need to add the -webkit- fallbacks as well):
+
+```css
+/* The new view */
+.main-view.ANIMATIONNAME.ng-enter {
+  animation: openAnim 0.4s forwards;
+}
+
+/* The current view */
+.main-view.ANIMATIONNAME.ng-leave {
+  animation: closeAnim 0.4s forwards;
+}
+
+/* The new view gets pushed from the right (100%) to 0 */
+@keyframes openAnim {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(0); }
+}
+
+/* The current view gets pushed from 0 to the left (-100%) */
+@keyframes closeAnim {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+```
+
+When the animation is done the element will be removed from the DOM so don't worry.
+Now to use it from code, add somewhere in HTML:
+
+```html
+<a ng-tap="go('/path/to/somewhere', 'ANIMATIONNAME')">Click me</a>
+```
+
+or from your controller:
+
+```javascript
+$scope.go('/path/to/somewhere', 'ANIMATIONNAME');
 ```
