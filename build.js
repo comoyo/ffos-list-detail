@@ -3,7 +3,7 @@ var execSync = require('exec-sync');
 var rmrf = require("wrench").rmdirSyncRecursive;
 var cpr = require("wrench").copyDirSyncRecursive;
 
-var steps = 6;
+var steps = 8;
 var current = 0;
 function printStep() {
   return '[' + (++current) + '/' + steps + ']';
@@ -42,10 +42,25 @@ data = data.replace('<script defer src="components/requirejs/require.js" ' +
 data = data.replace(/"css\/main\.css"/, '"css/main-built.css"');
 
 if (appcache) {
+  console.log(printStep(), 'Configuring appcache');
   data = data.replace(
     '<html><!-- manifest="manifest.appcache" -->',
     '<html manifest="manifest.appcache">');
+
+  var acfile = fs.readFileSync('./dist/manifest.appcache', 'utf8');
+  acfile = acfile.replace('VERSIONNUMBER', +new Date);
+  fs.writeFileSync('./dist/manifest.appcache', acfile, 'utf8');
 }
+else {
+  console.log(printStep(), 'Removing appcache reference');
+  data = data.replace(
+    '<html><!-- manifest="manifest.appcache" -->',
+    '<html>');
+
+  fs.unlinkSync('./dist/manifest.appcache');
+}
+
+console.log(printStep(), 'Caching views');
 
 var allViews = fs.readdirSync('./dist/views')
   .map(function(f) {

@@ -42,7 +42,7 @@ click 'Add packaged app', and point to the `www` folder.
 don't forget to add the file in the array in 'www/js/main.js'.
 This way RequireJS knows that it should load the file.
 * When adding new view templates only the templates in the root of 'www/views'
-are cached. Subfolders aren't processed at the moment.
+are cached. Subfolders aren't processed at the moment. (*PR welcome*)
 * When navigating around, please don't use normal links,
 use the `ng-tap="$navigate.go('/my/url', 'forward')"` directive.
 The second argument can be 'forward', 'backward', 'popup', 'popdown' depending on the animation.
@@ -88,14 +88,14 @@ However, you will need to take the following things in consideration
 when extending the application.
 
 1. Add CSS files as an @import rule in
-    [/css/main.css]((https://github.com/comoyo/ffos-list-detail/blob/master/css/main.css)
+    [css/main.css]((https://github.com/comoyo/ffos-list-detail/blob/master/css/main.css)
 2. Add UI parts and images that you need to
-    [/manifest.appcache](https://github.com/comoyo/ffos-list-detail/blob/master/www/manifest.appcache)
+    [manifest.appcache](https://github.com/comoyo/ffos-list-detail/blob/master/www/manifest.appcache)
 3. Views need to be put in the [/views](https://github.com/comoyo/ffos-list-detail/blob/master/www/views)
     directory. Subdirectories are not cached.
-4. If you are developing in Chrome, you need to manually clear the appcache
-    every time you updated the app in [chrome://appcache-internals](chrome://appcache-internals/).
-    Firefox desktop and Firefox OS will auto-refresh the app if there is an internet connection.
+4. The appcache will be updated everytime you do a build.
+    Remember that appcache works by showing the old version first before updating,
+    so you'll need to refresh to see the new version.
 
 ## Dealing with offline and HTTP requests
 
@@ -173,7 +173,7 @@ img.src = someDataFromTheServer.image;
 
 If you want to add a new view animation you can do it completely in CSS.
 We use keyframe animations through ng-animate to create the transitions.
-The animations live in [/css/app.css](https://github.com/comoyo/ffos-list-detail/blob/master/css/app.css),
+The animations live in [css/app.css](https://github.com/comoyo/ffos-list-detail/blob/master/css/app.css),
 and have the following format (you'll need to add the -webkit- fallbacks as well):
 
 ```css
